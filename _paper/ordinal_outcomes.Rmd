@@ -1,0 +1,94 @@
+---
+title: |
+  | Modelling Ordinal Outcome Variables:
+  | If it's Worth Doing, it's Worth Doing Well\thanks{Thank you to X, Y, and Z for their helpful comments.}
+author: |
+  | Jack Bailey\thanks{Research Associate, Department of Politics, University of Manchester, UK. If you have any comments or questions, feel free to contact me either by email (\href{mailto:jack.bailey@manchester.ac.uk}{jack.bailey@manchester.ac.uk}) or on Twitter (\href{https://www.twitter.com/PoliSciJack}{@PoliSciJack}).} & Matthew Barnfield\thanks{Postdoctoral Research Fellow, College of Social Sciences and International Studies, University of Exeter, UK}
+date: |
+  | \small This version `r format(Sys.time(), '%B %d, %Y')`.
+  |
+  | Word count: X,XXX
+abstract: |
+  | Everyone agrees that this issue is really important. But we do not know much about this specific question, although it matters a great deal, for these reasons. We approach the problem from this perspective. Our research design focuses on these cases and relies on these data, which we analyse using this method. Results show what we have learned about the question. They have these broader implications.
+indent: yes
+fontsize: 12pt
+geometry: margin = 1.15in
+subparagraph: yes
+compact-title: false
+bibliography: _assets/master.bib
+biblio-style: _assets/apsr.bst
+classoption: a4paper
+output: 
+  bookdown::pdf_document2: 
+    latex_engine: xelatex
+    toc: false
+    keep_tex: false
+    includes:
+      in_header:
+        - _assets/rmd-preamble.tex
+    number_sections: false
+    fig_caption: true
+---
+
+<!-- Latex setup -->
+
+\doublespacing
+
+```{=tex}
+\thispagestyle{empty}
+\clearpage
+```
+\pagebreak
+
+\setcounter{page}{1}
+
+```{r setup, include = F}
+
+# Load packages
+
+library(tidyverse)
+library(tidybayes)
+library(modelsummary)
+library(kableExtra)
+library(jbmisc)
+library(brms)
+library(here)
+
+
+# Load data
+
+# Load models
+
+# Tell knitr to use Cairo PDF when rendering plots so that it uses nice fonts
+
+knitr::opts_chunk$set(dev = "cairo_pdf")
+
+```
+
+# Introduction
+
+Ordinal data are one of the most common data types in political science. To this end, they serve an important purpose: to impose order on latent attitudes and beliefs that lack inherent scales. Where we hope to explain variation in political opinion, this is invaluable. Indeed, it is why we use ordinal scales to measure so many of our most important concepts. Consider, for example, voters' party identification (1 = *"Strong Republican"*, 7 = *"Strong Democrat"*), their macro-economic perceptions (1 = *"Got a lot worse"*, 5 = *"Got a lot better"*), and how often they pay attention to politics and government (1 = *"Always"*, 4 = *"Some of the time"*). These, and other similar data, have been instrumental in improving our understanding of political behaviour in the decades since *The American Voter* (Campbell et al., 1960). It is reasonable to say, therefore, that without this type of data our knowledge of politics and democracy would be much poorer.
+
+Yet ordinal data are one of the most commonly-mistreated data types in political science too. Indeed, much applied research simply treats them as continuous. This is understandable: ordinal data can be hard to model. But pretending that they are continuous can lead to serious inferential problems. This includes type I and II errors, estimates with incorrect signs, and predicted outcomes that lie outside of the measurement scale (Lidell and Kruschke, 2018). Moreover, while many researchers use ordered probit or logit regression to check for such errors, typical implementations of these models face similar issues (Bürkner and Vuorre, 2019; Liddell and Kruschke, 2018).
+
+<!-- Probably change the bit below. Had originally intended the paper to be about causal inference in particular, but better to be broad I think -->
+
+In light of the recent "causal revolution" (Pearl and Mackenzie, 2018), this issue merits serious consideration. Causal claims come with stringent requirements. Given their potential to alter both how we understand politics and how we make real-world political decisions, this is appropriate. Yet, little advice exists when it comes to causal inference and ordinal outcomes. This is unfortunate, as these data are ubiquitous where research questions concern political attitudes and beliefs. As a result, much causal research in political science takes great pains when it comes to causal identification, only to analyse the resulting data using methods that increase the chance of drawing false conclusions.
+
+Thus, in the present paper, I compare different approaches to analysing ordinal data and their implications for causal inference. In particular, I focus my attention on survey experiments. I then present a solution using Bayesian methods and free and open statistical software. To this end, I make three contributions. First, I show the inferential pitfalls we face modelling ordinal outcomes as continuous in experimental contexts. Second, I explain how to fit models robust to these problems and how to calculate average treatment effects for ordinal outcomes. Third, I demonstrate this approach in practice by reanalysing a recent survey experiment on economic voting, then make recommendations for future research.
+
+\pagebreak
+
+# References
+
+::: {#refs}
+:::
+
+
+\setcounter{table}{0}
+
+\renewcommand{\thetable}{A\arabic{table}}
+
+\setcounter{figure}{0}
+
+\renewcommand{\thefigure}{A\arabic{figure}}
