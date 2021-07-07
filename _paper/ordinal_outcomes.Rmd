@@ -9,7 +9,7 @@ date: |
   |
   | Word count: X,XXX
 abstract: |
-  | Everyone agrees that this issue is really important. But we do not know much about this specific question, although it matters a great deal, for these reasons. We approach the problem from this perspective. Our research design focuses on these cases and relies on these data, which we analyse using this method. Results show what we have learned about the question. They have these broader implications.
+  | Ordinal data are an invaluable source of knowledge in political science. However, their enormous potential is not fully realised in most research, because of limitations in how they are analysed. In this paper, we hope to rectify this by providing a primer on how better to model ordinal outcome variables by using Bayesian methods to measure latent and observed properties of ordinal measures. Rather than repeating warnings raised elsewhere about the potential for inferential errors in common analytical approaches, we make a positive case for why modelling ordinal variables better is worthwhile, explaining visually and in plain language the logic and implementation of Bayesian ordinal regression models. We then apply our approach to use ordinal data to study political polarisation, through both a simulated example and a replication of a published empirical analysis. Our arguments and findings show that political scientists should continue to use ordinal variables, but learn more from them. 
 indent: yes
 fontsize: 12pt
 geometry: margin = 1.15in
